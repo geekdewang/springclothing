@@ -1,0 +1,17 @@
+#设置端口号
+server:
+  port: 10200
+#注册中心设置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  #注册中心的地址
+spring:
+  application:
+    name: lxfeignconsumer #唯一名称
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/clothing?serverTimezone=UTC
+    username: root
+    password: 123
+    type: com.alibaba.druid.pool.DruidDataSource
