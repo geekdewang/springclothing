@@ -3,12 +3,16 @@ package com.zdwsh.springclothing.controller.UserController;
 import com.zdwsh.springclothing.controller.Service.UserService;
 import com.zdwsh.springclothing.user.User;
 import com.zdwsh.springclothing.vo.ResultVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(value = "登陆注册相关操作")
 @RestController
 public class UserController {
 
@@ -16,12 +20,14 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("login")
-    public ResultVo login(@RequestParam(value = "phone") String phone, @RequestParam(value = "password")String passsword){
+    @ApiOperation(value = "用户登录",notes = "用户登录")
+    public ResultVo login(@ApiParam(value = "用户账号（手机号）") @RequestParam(value = "phone") String phone,@ApiParam(value = "密码") @RequestParam(value = "password")String passsword){
         ResultVo resultVo = userService.login(phone,passsword);
         return resultVo;
     }
     @RequestMapping("register")
-    public ResultVo regist(@RequestBody User user){
+    @ApiOperation(value = "新增用户",notes = "注册新用户")
+    public ResultVo regist(@ApiParam(value = "用户对象") @RequestBody User user){
 
         return userService.regist(user);
     }
