@@ -14,15 +14,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("login")
+    @GetMapping("login")
     public ResultVo login(@RequestParam("phone") String phone, @RequestParam("password") String password){
 
         return userService.lgoin(phone,password);
     }
 
-    @RequestMapping("register")
+    @PostMapping("register")
     public ResultVo regist(@RequestBody User user){
 
         return userService.regist(user);
+    }
+
+    //找回密码
+    @PostMapping("findpassword")
+    public ResultVo findByPassword(@RequestParam("phone") String phone){
+
+        return userService.findByPassword(phone);
     }
 }

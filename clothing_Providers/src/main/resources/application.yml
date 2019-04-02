@@ -13,7 +13,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/clothing?serverTimezone=UTC
     username: root
-    password: 872230699
+    password: 123
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   mapper-locations: classpath*:mapper/*.xml

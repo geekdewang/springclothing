@@ -7,4 +7,5 @@ public interface UserService {
 
     ResultVo lgoin(String name, String password);
     ResultVo regist(User user);
+    ResultVo findByPassword(String name);
 }
