@@ -12,6 +12,7 @@
         <module>clothing_Server</module>
         <module>clothing_Providers</module>
         <module>clothing_Common</module>
+        <module>clothing_ProvidderMenu</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

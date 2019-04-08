@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>clothing_Providers</artifactId>
+    <artifactId>clothing_ProvidderMenu</artifactId>
 
     <dependencies>
         <dependency>
@@ -33,6 +33,13 @@
             <version>1.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.zdwsh</groupId>
+            <artifactId>clothing_Common</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
+
 
 </project>
