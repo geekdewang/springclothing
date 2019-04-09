@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdwsh.springclothing.menuDao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.zdwsh.springclothing.menu.Goods">
+    <id column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="gname" jdbcType="VARCHAR" property="gname" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gid, gname, sid, price, num, comment, address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where gid = #{gid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zdwsh.springclothing.menu.Goods">
+    insert into goods (gid, gname, sid, 
+      price, num, comment, 
+      address)
+    values (#{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, 
+      #{price,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zdwsh.springclothing.menu.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="gname != null">
+        gname,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gid != null">
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="gname != null">
+        #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zdwsh.springclothing.menu.Goods">
+    update goods
+    <set>
+      <if test="gname != null">
+        gname = #{gname,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zdwsh.springclothing.menu.Goods">
+    update goods
+    set gname = #{gname,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      num = #{num,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where gid = #{gid,jdbcType=INTEGER}
+  </update>
+</mapper>

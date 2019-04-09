@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdwsh.springclothing.menuDao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.zdwsh.springclothing.menu.Menu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="h_id" jdbcType="INTEGER" property="hId" />
+    <result column="h_homepage" jdbcType="VARCHAR" property="hHomepage" />
+    <result column="h_woman" jdbcType="VARCHAR" property="hWoman" />
+    <result column="h_man" jdbcType="VARCHAR" property="hMan" />
+    <result column="h_blogs" jdbcType="VARCHAR" property="hBlogs" />
+    <result column="h_webpage" jdbcType="VARCHAR" property="hWebpage" />
+    <result column="h_link" jdbcType="VARCHAR" property="hLink" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, h_id, h_homepage, h_woman, h_man, h_blogs, h_webpage, h_link
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zdwsh.springclothing.menu.Menu">
+    insert into menu (id, h_id, h_homepage, 
+      h_woman, h_man, h_blogs, 
+      h_webpage, h_link)
+    values (#{id,jdbcType=INTEGER}, #{hId,jdbcType=INTEGER}, #{hHomepage,jdbcType=VARCHAR}, 
+      #{hWoman,jdbcType=VARCHAR}, #{hMan,jdbcType=VARCHAR}, #{hBlogs,jdbcType=VARCHAR}, 
+      #{hWebpage,jdbcType=VARCHAR}, #{hLink,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zdwsh.springclothing.menu.Menu">
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hId != null">
+        h_id,
+      </if>
+      <if test="hHomepage != null">
+        h_homepage,
+      </if>
+      <if test="hWoman != null">
+        h_woman,
+      </if>
+      <if test="hMan != null">
+        h_man,
+      </if>
+      <if test="hBlogs != null">
+        h_blogs,
+      </if>
+      <if test="hWebpage != null">
+        h_webpage,
+      </if>
+      <if test="hLink != null">
+        h_link,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hId != null">
+        #{hId,jdbcType=INTEGER},
+      </if>
+      <if test="hHomepage != null">
+        #{hHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="hWoman != null">
+        #{hWoman,jdbcType=VARCHAR},
+      </if>
+      <if test="hMan != null">
+        #{hMan,jdbcType=VARCHAR},
+      </if>
+      <if test="hBlogs != null">
+        #{hBlogs,jdbcType=VARCHAR},
+      </if>
+      <if test="hWebpage != null">
+        #{hWebpage,jdbcType=VARCHAR},
+      </if>
+      <if test="hLink != null">
+        #{hLink,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zdwsh.springclothing.menu.Menu">
+    update menu
+    <set>
+      <if test="hId != null">
+        h_id = #{hId,jdbcType=INTEGER},
+      </if>
+      <if test="hHomepage != null">
+        h_homepage = #{hHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="hWoman != null">
+        h_woman = #{hWoman,jdbcType=VARCHAR},
+      </if>
+      <if test="hMan != null">
+        h_man = #{hMan,jdbcType=VARCHAR},
+      </if>
+      <if test="hBlogs != null">
+        h_blogs = #{hBlogs,jdbcType=VARCHAR},
+      </if>
+      <if test="hWebpage != null">
+        h_webpage = #{hWebpage,jdbcType=VARCHAR},
+      </if>
+      <if test="hLink != null">
+        h_link = #{hLink,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zdwsh.springclothing.menu.Menu">
+    update menu
+    set h_id = #{hId,jdbcType=INTEGER},
+      h_homepage = #{hHomepage,jdbcType=VARCHAR},
+      h_woman = #{hWoman,jdbcType=VARCHAR},
+      h_man = #{hMan,jdbcType=VARCHAR},
+      h_blogs = #{hBlogs,jdbcType=VARCHAR},
+      h_webpage = #{hWebpage,jdbcType=VARCHAR},
+      h_link = #{hLink,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from menu
+  </select>
+</mapper>

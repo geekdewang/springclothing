@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdwsh.springclothing.menuDao.CartMapper">
+  <resultMap id="BaseResultMap" type="com.zdwsh.springclothing.menu.Cart">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="cprice" jdbcType="DOUBLE" property="cprice" />
+    <result column="cnum" jdbcType="INTEGER" property="cnum" />
+    <result column="totalprice" jdbcType="DOUBLE" property="totalprice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cid, cname, cprice, cnum, totalprice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cart
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cart
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zdwsh.springclothing.menu.Cart">
+    insert into cart (cid, cname, cprice, 
+      cnum, totalprice)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{cprice,jdbcType=DOUBLE}, 
+      #{cnum,jdbcType=INTEGER}, #{totalprice,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zdwsh.springclothing.menu.Cart">
+    insert into cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="cprice != null">
+        cprice,
+      </if>
+      <if test="cnum != null">
+        cnum,
+      </if>
+      <if test="totalprice != null">
+        totalprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cprice != null">
+        #{cprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cnum != null">
+        #{cnum,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zdwsh.springclothing.menu.Cart">
+    update cart
+    <set>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cprice != null">
+        cprice = #{cprice,jdbcType=DOUBLE},
+      </if>
+      <if test="cnum != null">
+        cnum = #{cnum,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        totalprice = #{totalprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zdwsh.springclothing.menu.Cart">
+    update cart
+    set cname = #{cname,jdbcType=VARCHAR},
+      cprice = #{cprice,jdbcType=DOUBLE},
+      cnum = #{cnum,jdbcType=INTEGER},
+      totalprice = #{totalprice,jdbcType=DOUBLE}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>
