@@ -3,6 +3,8 @@ package com.zdwsh.springclothing.menuDao;
 
 import com.zdwsh.springclothing.menu.Submenu;
 
+import java.util.List;
+
 public interface SubmenuMapper {
     int deleteByPrimaryKey(Integer sid);
 
@@ -15,4 +17,6 @@ public interface SubmenuMapper {
     int updateByPrimaryKeySelective(Submenu record);
 
     int updateByPrimaryKey(Submenu record);
+
+    List<Submenu> findByMid(int mid);
 }

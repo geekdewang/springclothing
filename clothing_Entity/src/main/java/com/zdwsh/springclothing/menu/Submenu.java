@@ -5,6 +5,16 @@ public class Submenu {
 
     private String name;
 
+    private int mid;
+
+    public int getMid() {
+        return mid;
+    }
+
+    public void setMid(int mid) {
+        this.mid = mid;
+    }
+
     public Integer getSid() {
         return sid;
     }

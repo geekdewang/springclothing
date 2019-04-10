@@ -3,6 +3,8 @@ package com.zdwsh.springclothing.menuDao;
 
 import com.zdwsh.springclothing.menu.Cmenu;
 
+import java.util.List;
+
 public interface CmenuMapper {
     int deleteByPrimaryKey(Integer mid);
 
@@ -15,4 +17,7 @@ public interface CmenuMapper {
     int updateByPrimaryKeySelective(Cmenu record);
 
     int updateByPrimaryKey(Cmenu record);
+
+    //显示菜单
+    List<Cmenu> findAll();
 }

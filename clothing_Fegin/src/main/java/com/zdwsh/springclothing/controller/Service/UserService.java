@@ -1,6 +1,7 @@
 package com.zdwsh.springclothing.controller.Service;
 
 import com.zdwsh.springclothing.user.User;
+import com.zdwsh.springclothing.user.UserInfo;
 import com.zdwsh.springclothing.vo.ResultVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,4 +17,8 @@ public interface UserService {
     ResultVo regist(@RequestBody User user);
     @PostMapping("findpassword")
     ResultVo findByPassword(@RequestParam("phone") String phone);
+    @PostMapping("info/findbyuid")
+    ResultVo findByUid(@RequestParam("uid")int uid);
+    @PostMapping("info/upbyuid")
+    ResultVo upInfo(@RequestBody UserInfo info);
 }

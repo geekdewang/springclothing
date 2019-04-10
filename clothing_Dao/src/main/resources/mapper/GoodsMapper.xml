@@ -114,4 +114,13 @@
       address = #{address,jdbcType=VARCHAR}
     where gid = #{gid,jdbcType=INTEGER}
   </update>
+
+  <select id="findBySid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT g.* FROM goods g
+    INNER JOIN submenu s ON g.sid = s.sid where s.sid = #{sid}
+  </select>
+  <select id="findByGid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM goods where gid = #{gid}
+  </select>
+
 </mapper>

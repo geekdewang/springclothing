@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="com.zdwsh.springclothing.menu.Submenu">
     <id column="sid" jdbcType="INTEGER" property="sid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
   </resultMap>
   <sql id="Base_Column_List">
-    sid, name
+    sid, name,mid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -31,10 +32,16 @@
       <if test="name != null">
         name,
       </if>
+      <if test="mid != null">
+        mid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sid != null">
         #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -55,4 +62,8 @@
     set name = #{name,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
+  <select id="findByMid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT s.sid,s.name,s.mid FROM submenu s
+    INNER JOIN cmenu m ON s.mid= m.mid WHERE m.mid=#{mid}
+  </select>
 </mapper>

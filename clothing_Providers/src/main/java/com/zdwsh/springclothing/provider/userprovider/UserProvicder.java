@@ -28,7 +28,7 @@ public class UserProvicder implements UserService {
             if (!pw.equals(password)) {
                 throw new RuntimeException("输入密码错误");
             }
-           resultVo= ResultUtil.exec(true,"登录成功",user1);
+           resultVo= ResultUtil.exec(true,"登录成功",user1.getId());
         } catch (Exception e) {
             e.printStackTrace();
             resultVo = ResultUtil.exec(false,"登录失败",e.getMessage());

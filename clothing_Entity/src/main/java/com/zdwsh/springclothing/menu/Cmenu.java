@@ -5,7 +5,6 @@ public class Cmenu {
 
     private String name;
 
-    private Integer sid;
 
     public Integer getMid() {
         return mid;
@@ -23,11 +22,4 @@ public class Cmenu {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
 }
