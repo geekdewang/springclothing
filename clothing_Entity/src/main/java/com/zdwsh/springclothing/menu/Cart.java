@@ -1,6 +1,8 @@
 package com.zdwsh.springclothing.menu;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     private Integer cid;
 
     private String cname;

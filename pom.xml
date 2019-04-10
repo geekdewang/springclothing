@@ -13,6 +13,7 @@
         <module>clothing_Providers</module>
         <module>clothing_Common</module>
         <module>clothing_ProvidderMenu</module>
+        <module>clothing_cart</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

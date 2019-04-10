@@ -90,4 +90,7 @@
       totalprice = #{totalprice,jdbcType=DOUBLE}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from cart
+  </select>
 </mapper>
