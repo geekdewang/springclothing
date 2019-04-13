@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "展示商品信息")
 @RestController
 public class GoodsController {
+    /**
+     * 没的问题
+     */
     @Autowired
     private MenuService goodsService;
 

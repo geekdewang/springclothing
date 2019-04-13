@@ -39,6 +39,10 @@ public class UserProvicder implements UserService {
     @Override
     public ResultVo regist(User user) {
         ResultVo resultVo = new ResultVo();
+        User user1 = userMapper.findByName(user.getPhone());
+        if (user1 != null){
+            return ResultUtil.exec(false,"注册失败","用户已注册");
+        }
         //AES加密
         String pw = EncryptionUtil.AESEnc(EncryptionUtil.SECRET_KEY, user.getPassword());
         user.setPassword(pw);
@@ -58,7 +62,7 @@ public class UserProvicder implements UserService {
         try {
             User user = userMapper.findByName(phone);
             if (user == null) {
-                throw new RuntimeException("用户名不存在");
+                return ResultUtil.exec(false,"用户已存在","用户已存在");
             }
             //AES解密
             user.setPassword(EncryptionUtil.AESDec(EncryptionUtil.SECRET_KEY,user.getPassword()));
